@@ -13,5 +13,6 @@ packages:
   - systemd-resolved
 
 runcmd:
+  - [ sh, -c, "curl -fsSL -u ${username}:${password} https://${install_base_url}/${hostname}-install.sh -o /tmp/install.sh" ]
   - [ sh, -c, "curl -fsSL ${install_base_url}/${hostname}-install.sh -o /tmp/install.sh" ]
   - [ sh, -c, "chmod +x /tmp/install.sh && /tmp/install.sh" ]
