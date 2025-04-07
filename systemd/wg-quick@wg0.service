@@ -1,0 +1,16 @@
+### File: systemd/wg-quick@wg0.service
+
+[Unit]
+Description=WireGuard via wg-quick(8) for %%i
+Documentation=man:wg-quick(8)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/wg-quick up %%i
+ExecStop=/usr/bin/wg-quick down %%i
+
+[Install]
+WantedBy=multi-user.target
